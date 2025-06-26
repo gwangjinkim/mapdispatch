@@ -16,7 +16,18 @@ A minimalist library to bring Clojure-style multimethods, method combinations, a
 
 Just clone or copy the `pyclosure/` folder into your project.
 
-(Pip packaging coming soon.)
+```
+# if you still use `pip`:
+pip install pyclosure
+
+# but we highly recommend to use `uv`:
+uv add pyclosure
+
+# and after installation via uv you can run the examples by:
+pyclosure-zoo
+
+```
+
 
 ---
 

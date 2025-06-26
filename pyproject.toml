@@ -12,7 +12,6 @@ requires-python = ">=3.7"
 [project.urls]
 Homepage = "https://github.com/gwangjinkim/pyclosure"
 
-
 [tool.setuptools]
 package-dir = { "" = "src" }
 
@@ -22,3 +21,6 @@ where = ["src"]
 [build-system]
 requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
+
+[pyproject.scripts]
+pyclosure-zoo = "pyclosure.examples.zoo:main"

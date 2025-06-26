@@ -46,34 +46,24 @@ feed.defmethod("lion", open_cage, kind=":before")
 feed.defmethod("lion", cleanup, kind=":after")
 feed.defmethod("lion", log_feed, kind=":around")
 
-# 6. Feed animals
-print("== Feeding Simba ==")
-feed(simba)
-
-print("\n== Feeding Dumbo ==")
-feed(dumbo)
-
-print("\n== Feeding Shere Khan ==")
-feed(shere)
-
-# 7. Define real multiple dispatch: interactions
+# 6. Define real multiple dispatch: interactions
 interact = MultiMethod(lambda a, b: (a["type"], b["type"]), hierarchy=h)
 
 def lion_vs_lion(a, b):
     print(f"{a['name']} roars at {b['name']}")
 
-def lion_vs_elephant(a, b):
+def lion_vs_elephant(a, b):  
     print(f"{a['name']} chases {b['name']}")
-
+    
 def elephant_vs_lion(a, b):
     print(f"{a['name']} flees from {b['name']}")
-
+    
 def bigcats_fight(a, b):
     print(f"{a['name']} fights {b['name']} like wild cats!")
 
 def generic_encounter(a, b):
     print(f"{a['name']} and {b['name']} look at each other curiously.")
-
+    
 interact.defmethod(("lion", "lion"), lion_vs_lion)
 interact.defmethod(("lion", "elephant"), lion_vs_elephant)
 interact.defmethod(("elephant", "lion"), elephant_vs_lion)
@@ -81,8 +71,24 @@ interact.defmethod(("big-cat", "big-cat"), bigcats_fight)
 interact.defmethod(("animal", "animal"), generic_encounter)    # general fallback
 
 
-# 8. Run interactions
-print("\n== Interactions ==")
-interact(simba, shere)
-interact(simba, dumbo)
-interact(dumbo, simba)
+def main():
+    # 7. Feed animals
+    print("== Feeding Simba ==")
+    feed(simba)
+
+    print("\n== Feeding Dumbo ==")
+    feed(dumbo)
+
+    print("\n== Feeding Shere Khan ==")
+    feed(shere)
+
+    # 8. Run interactions
+    print("\n== Interactions ==")
+    interact(simba, shere)
+    interact(simba, dumbo)
+    interact(dumbo, simba)
+
+if __name__ == "__main__":
+    main()
+
+
