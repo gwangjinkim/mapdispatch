@@ -1,0 +1,67 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.pyo
+*.so
+*.dll
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+*.env
+*.venv
+
+# PyInstaller
+*.spec
+dist/
+build/
+
+# Wheels / packages / dist
+*.egg
+*.egg-info/
+*.eggs/
+*.whl
+*.zip
+*.tar.gz
+pip-wheel-metadata/
+
+# Installer logs
+pip-log.txt
+
+# Unit test / coverage
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+.coverage
+.cache
+.pytest_cache/
+nosetests.xml
+*.cover
+*.py,cover
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Editors/OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Jupyter
+.ipynb_checkpoints
+
+# Packaging
+MANIFEST
+
+# UV build cache
+.uv/
+
+# Local dev tools or examples
+src/pyclosure/examples/__pycache__/
