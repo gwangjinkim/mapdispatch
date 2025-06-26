@@ -1,4 +1,4 @@
-from pyclosure import Hierarchy, MultiMethod
+from mapdispatch import Hierarchy, MultiMethod
 
 # 1. Setup animal data
 simba = {"name": "Simba", "type": "lion"}

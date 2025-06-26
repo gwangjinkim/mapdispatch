@@ -1,5 +1,5 @@
 import pytest
-from pyclosure import Hierarchy, MultiMethod
+from mapdispatch import Hierarchy, MultiMethod
 
 def test_single_dispatch():
     h = Hierarchy()
