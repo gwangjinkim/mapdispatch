@@ -127,6 +127,41 @@ def log_feed(inner_fn, a):
 
 feed.defmethod("lion", log_feed, kind=":around")
 ```
+---
+
+
+## Method Registration via Decorators
+
+You can also define methods using decorators instead of manual registration.
+
+### Primary method:
+
+```python
+@feed.defmethod("lion")
+def lion_feed(a):
+    print(f"{a['name']} eats meat")
+```
+### With hooks:
+
+```python
+@feed.defmethod("lion", kind=":before")
+def open_cage(a):
+    print(f"Opening cage for {a['name']}")
+
+@feed.defmethod("lion", kind=":after")
+def cleanup(a):
+    print(f"Cleaning cage after {a['name']}")
+
+@feed.defmethod("lion", kind=":around")
+def logger(inner_fn, a):
+    print("[LOG] Start")
+    result = inner_fn(a)
+    print("[LOG] End")
+    return result
+```
+
+this is fully equivalent to manually registering via feed.defmethod(...) 
+and is great for organizeing logic clearly and idiomatically.
 
 ---
 

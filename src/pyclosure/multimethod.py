@@ -34,18 +34,29 @@ class MultiMethod:
         self.around = defaultdict(list)
         self._cache = {}
 
-    def defmethod(self, dispatch_val, fn, kind='primary'):
-        if kind == 'primary':
+    def defmethod(self, dispatch_val, fn=None, *, kind="primary"):
+        if fn is None:
+            # Decorator form: @defmethod("lion")
+            def decorator(actual_fn):
+                self._register(dispatch_val, actual_fn, kind)
+                return actual_fn
+            return decorator
+        else:
+            # Direct registration: defmethod("lion", fn)
+            self._register(dispatch_val, fn, kind)
+
+    def _register(self, dispatch_val, fn, kind):
+        if kind == "primary":
             self.primary[dispatch_val] = fn
-        elif kind == ':before':
+        elif kind == ":before":
             self.before[dispatch_val].append(fn)
-        elif kind == ':after':
+        elif kind == ":after":
             self.after[dispatch_val].append(fn)
-        elif kind == ':around':
+        elif kind == ":around":
             self.around[dispatch_val].append(fn)
         else:
             raise ValueError(f"Unknown method kind: {kind}")
-
+    
     def __call__(self, *args, **kwargs):
         dispatch_val = self.dispatch_fn(*args, **kwargs)
         method = self._resolve_method(dispatch_val)

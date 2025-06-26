@@ -89,3 +89,42 @@ def test_method_combinations():
         "[LOG] End Simba",
         "Clean cage after Simba"
     ]
+
+def test_defmethod_decorator_support():
+    h = Hierarchy()
+    h.derive("lion", "animal")
+
+    events = []
+
+    feed = MultiMethod(lambda a: a["type"], hierarchy=h)
+
+    @feed.defmethod("lion")
+    def lion_feed(a):
+        events.append(f"{a['name']} eats meat")
+
+    @feed.defmethod("lion", kind=":before")
+    def open_cage(a):
+        events.append(f"Open cage for {a['name']}")
+
+    @feed.defmethod("lion", kind=":after")
+    def cleanup(a):
+        events.append(f"Clean cage after {a['name']}")
+
+    @feed.defmethod("lion", kind=":around")
+    def logger(inner_fn, a):
+        events.append(f"[LOG] Start {a['name']}")
+        inner_fn(a)
+        events.append(f"[LOG] End {a['name']}")
+        return "OK"
+
+    simba = {"name": "Simba", "type": "lion"}
+    result = feed(simba)
+
+    assert result == "OK"
+    assert events == [
+        "Open cage for Simba",
+        "[LOG] Start Simba",
+        "Simba eats meat",
+        "[LOG] End Simba",
+        "Clean cage after Simba"
+    ]
