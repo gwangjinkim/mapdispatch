@@ -68,9 +68,18 @@ def lion_vs_elephant(a, b):
 def elephant_vs_lion(a, b):
     print(f"{a['name']} flees from {b['name']}")
 
+def bigcats_fight(a, b):
+    print(f"{a['name']} fights {b['name']} like wild cats!")
+
+def generic_encounter(a, b):
+    print(f"{a['name']} and {b['name']} look at each other curiously.")
+
 interact.defmethod(("lion", "lion"), lion_vs_lion)
 interact.defmethod(("lion", "elephant"), lion_vs_elephant)
 interact.defmethod(("elephant", "lion"), elephant_vs_lion)
+interact.defmethod(("big-cat", "big-cat"), bigcats_fight)
+interact.defmethod(("animal", "animal"), generic_encounter)    # general fallback
+
 
 # 8. Run interactions
 print("\n== Interactions ==")
