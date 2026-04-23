@@ -1,4 +1,4 @@
-# PyClosure
+# Papdispatch
 
 A minimalist library to bring Clojure-style multimethods, method combinations, and tag-based polymorphism into Python — **without using classes**.
 
@@ -14,17 +14,17 @@ A minimalist library to bring Clojure-style multimethods, method combinations, a
 
 ## Installation
 
-Just clone or copy the `pyclosure/` folder into your project.
+Just clone or copy the `mapdispatch/` folder into your project.
 
 ```
 # if you still use `pip`:
-pip install pyclosure
+pip install mapdispatch
 
 # but we highly recommend to use `uv`:
-uv add pyclosure
+uv add mapdispatch
 
 # and after installation via uv you can run the examples by:
-pyclosure-zoo
+mapdispatch-zoo
 
 ```
 
@@ -43,7 +43,7 @@ dumbo = {"name": "Dumbo", "type": "elephant"}
 ### Create a hierarchy
 
 ```python
-from pyclosure import Hierarchy, MultiMethod
+from mapdispatch import Hierarchy, MultiMethod
 
 h = Hierarchy()
 h.derive("lion", "big-cat")
@@ -165,7 +165,7 @@ and is great for organizeing logic clearly and idiomatically.
 
 ---
 
-## Why PyClosure?
+## Why mapdispatch?
 
 This library helps you:
 
@@ -176,7 +176,7 @@ This library helps you:
 
 Inspired by:
 - [Clojure’s multimethods](https://clojure.org/reference/multimethods)
-- [Common Lisp Object System (CLOS)](https://clos-mop.hexstreamsoft.com/)
+- [Common Lisp Object System (CLOS)](https://quickref.common-lisp.net/closer-mop.html)
 
 ---
 
