@@ -1,4 +1,4 @@
-# Papdispatch
+# mapdispatch
 
 A minimalist library to bring Clojure-style multimethods, method combinations, and tag-based polymorphism into Python — **without using classes**.
 
